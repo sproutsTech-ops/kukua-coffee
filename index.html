@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kukua Coffee - thoughtfully brewed coffee, food and good company."
+    />
+    <title>Kukua Coffee | Find your good cup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      :root {
+        --forest: #173f35;
+        --deep: #102c26;
+        --moss: #63856a;
+        --sage: #dfe9df;
+        --cream: #f6f3ec;
+        --warm: #d88b54;
+        --ink: #20302b;
+        --white: #fffdf9;
+        --line: #dce3dc;
+        --shadow: 0 18px 50px rgba(23, 63, 53, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--cream);
+        font-family: "DM Sans", sans-serif;
+        overflow-x: hidden;
+      }
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        border: 0;
+      }
+      .container {
+        width: min(1180px, calc(100% - 48px));
+        margin: auto;
+      }
+      .topbar {
+        padding: 10px 0;
+        background: var(--forest);
+        color: #eaf4e9;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(246, 243, 236, 0.94);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(23, 63, 53, 0.08);
+      }
+      nav {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+      }
+      .brand {
+        color: var(--forest);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        font-size: 18px;
+      }
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 33px;
+        height: 33px;
+        background: var(--forest);
+        color: #f4d4aa;
+        border-radius: 50%;
+        font-family: Georgia, serif;
+        font-size: 19px;
+        letter-spacing: 0;
+      }
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        align-items: center;
+      }
+      .nav-links a {
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .nav-links a:hover {
+        color: var(--warm);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .icon-btn {
+        background: transparent;
+        color: var(--forest);
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+      }
+      .icon-btn:hover {
+        background: var(--sage);
+      }
+      .count {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: var(--warm);
+        color: white;
+        font-size: 10px;
+        min-width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+      }
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 19px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 13px;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-primary {
+        color: #fff;
+        background: var(--forest);
+      }
+      .btn-primary:hover {
+        background: var(--deep);
+      }
+      .btn-light {
+        background: var(--white);
+        color: var(--forest);
+      }
+      .btn-outline {
+        color: var(--forest);
+        background: transparent;
+        border: 1px solid var(--forest);
+      }
+      .hero {
+        min-height: 625px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--sage);
+      }
+      .hero-copy {
+        padding: 90px max(24px, calc((100vw - 1180px) / 2)) 80px
+          max(24px, calc((100vw - 1180px) / 2));
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .eyebrow {
+        color: var(--warm);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 700;
+        margin: 0 0 20px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", Georgia, serif;
+        color: var(--forest);
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(50px, 6vw, 83px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        max-width: 540px;
+      }
+      .hero-copy p {
+        max-width: 420px;
+        line-height: 1.7;
+        margin: 26px 0 32px;
+        color: #466159;
+      }
+      .hero-photo {
+        min-height: 625px;
+        background: url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=85")
+          center/cover;
+        position: relative;
+      }
+      .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(23, 63, 53, 0.12),
+          transparent 50%
+        );
+      }
+      .section {
+        padding: 95px 0;
+      }
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 34px;
+        gap: 20px;
+      }
+      .section-heading h2 {
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1;
+      }
+      .section-heading p {
+        max-width: 390px;
+        color: #65746e;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .filter-bar {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .filter {
+        padding: 10px 17px;
+        border: 1px solid var(--line);
+        color: #577067;
+        background: transparent;
+        border-radius: 20px;
+        font-size: 13px;
+      }
+      .filter.active,
+      .filter:hover {
+        background: var(--forest);
+        color: white;
+        border-color: var(--forest);
+      }
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 19px;
+      }
+      .product {
+        background: var(--white);
+        border: 1px solid #e9e8e0;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .product:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+      .product-image {
+        height: 235px;
+        width: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .product-body {
+        padding: 20px;
+      }
+      .product-body h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+      .product-body p {
+        color: #76847e;
+        font-size: 13px;
+        line-height: 1.5;
+        min-height: 40px;
+        margin: 0 0 18px;
+      }
+      .product-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .price {
+        color: var(--forest);
+        font-weight: 700;
+      }
+      .add-btn {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: white;
+        background: var(--warm);
+      }
+      .add-btn:hover {
+        background: var(--forest);
+      }
+      .story {
+        background: var(--forest);
+        color: #eff4eb;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+      }
+      .story-photo {
+        min-height: 480px;
+        background: url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=85")
+          center/cover;
+      }
+      .story-copy {
+        padding: 78px max(24px, calc((100vw - 1180px) / 2)) 78px 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .story-copy h2 {
+        color: white;
+        font-size: clamp(35px, 4vw, 54px);
+        line-height: 1.05;
+      }
+      .story-copy p {
+        line-height: 1.7;
+        color: #c6d5ca;
+        max-width: 430px;
+        margin: 25px 0 30px;
+      }
+      .story-copy .eyebrow {
+        color: #e7ad75;
+      }
+      .visit {
+        background: #ead9c2;
+        padding: 64px 0;
+      }
+      .visit-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+      }
+      .visit h2 {
+        font-size: 40px;
+      }
+      .visit p {
+        color: #6d6659;
+        margin: 8px 0 0;
+      }
+      footer {
+        background: var(--deep);
+        color: #c3d0c4;
+        padding: 48px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 30px;
+        padding-bottom: 45px;
+      }
+      footer .brand {
+        color: white;
+        margin-bottom: 15px;
+      }
+      footer .brand-mark {
+        background: #c4d8c5;
+        color: var(--forest);
+      }
+      footer p,
+      footer a {
+        color: #9eafa3;
+        font-size: 13px;
+        line-height: 1.7;
+        text-decoration: none;
+        display: block;
+      }
+      footer h4 {
+        color: #f5f5e9;
+        margin: 5px 0 16px;
+        font-size: 13px;
+      }
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 20px;
+        color: #7f9386;
+        font-size: 12px;
+      }
+      .mobile-menu {
+        display: none;
+      }
+      .drawer-backdrop,
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(16, 44, 38, 0.55);
+        z-index: 20;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .drawer-backdrop.open,
+      .modal-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .cart-drawer {
+        position: fixed;
+        z-index: 21;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: min(430px, 100%);
+        background: var(--white);
+        transform: translateX(100%);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+      }
+      .cart-drawer.open {
+        transform: translateX(0);
+      }
+      .drawer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 23px;
+        border-bottom: 1px solid var(--line);
+      }
+      .drawer-head h2 {
+        font-size: 28px;
+      }
+      .cart-items {
+        flex: 1;
+        overflow: auto;
+        padding: 18px 23px;
+      }
+      .cart-line {
+        display: flex;
+        gap: 13px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .cart-line img {
+        width: 68px;
+        height: 68px;
+        object-fit: cover;
+      }
+      .cart-line h4 {
+        margin: 3px 0 7px;
+        color: var(--forest);
+      }
+      .cart-line p {
+        font-size: 13px;
+        margin: 0;
+        color: #6d7e76;
+      }
+      .qty {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .qty button {
+        background: var(--sage);
+        color: var(--forest);
+        border-radius: 50%;
+        width: 23px;
+        height: 23px;
+      }
+      .cart-bottom {
+        padding: 21px 23px;
+        border-top: 1px solid var(--line);
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .empty {
+        text-align: center;
+        padding: 60px 15px;
+        color: #77877e;
+      }
+      .empty i {
+        display: block;
+        margin: auto auto 12px;
+      }
+      .modal {
+        position: fixed;
+        z-index: 22;
+        inset: 50% auto auto 50%;
+        transform: translate(-50%, -45%);
+        width: min(440px, calc(100% - 30px));
+        max-height: calc(100svh - 30px);
+        overflow-y: auto;
+        background: var(--white);
+        padding: 30px;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s,
+          transform 0.25s;
+      }
+      .modal.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%);
+      }
+      .modal-close {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        background: transparent;
+        color: var(--forest);
+      }
+      .modal h2 {
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+      .modal-sub {
+        color: #74847b;
+        font-size: 13px;
+        margin: 0 0 22px;
+      }
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--line);
+        margin: 0 -30px 23px;
+        padding: 0 30px;
+        gap: 22px;
+      }
+      .tab {
+        background: transparent;
+        padding: 10px 0;
+        color: #829087;
+        border-bottom: 2px solid transparent;
+      }
+      .tab.active {
+        color: var(--forest);
+        border-color: var(--warm);
+        font-weight: 700;
+      }
+      .form-field {
+        display: block;
+        margin-bottom: 15px;
+        color: var(--forest);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .form-field input,
+      .form-field textarea,
+      .form-field select {
+        display: block;
+        margin-top: 7px;
+        width: 100%;
+        border: 1px solid var(--line);
+        padding: 12px;
+        background: #fbfaf5;
+        outline: none;
+        color: var(--ink);
+      }
+      .form-field textarea {
+        resize: vertical;
+        min-height: 75px;
+      }
+      .form-field input:focus,
+      .form-field textarea:focus,
+      .form-field select:focus {
+        border-color: var(--moss);
+      }
+      .full {
+        width: 100%;
+      }
+      .notice {
+        padding: 12px;
+        background: var(--sage);
+        color: var(--forest);
+        font-size: 12px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+      .user-pill {
+        display: none;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--forest);
+        font-weight: 700;
+      }
+      .user-pill.active {
+        display: flex;
+      }
+      .user-pill button {
+        background: transparent;
+        color: var(--warm);
+        font-size: 11px;
+        text-decoration: underline;
+      }
+      .admin-panel {
+        display: none;
+        background: #f0e8d9;
+        padding: 18px;
+        margin-top: 30px;
+      }
+      .admin-panel.visible {
+        display: block;
+      }
+      .admin-panel h3 {
+        font-size: 22px;
+      }
+      .admin-panel p {
+        font-size: 13px;
+        color: #6f6d61;
+      }
+      @media (max-width: 800px) {
+        .container {
+          width: min(100% - 40px, 1180px);
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: calc(100% + 1px);
+          left: 0;
+          right: 0;
+          padding: 18px 20px 22px;
+          background: rgba(246, 243, 236, 0.98);
+          border-bottom: 1px solid var(--line);
+          box-shadow: 0 14px 25px rgba(23, 63, 53, 0.08);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+        }
+        .nav-links.mobile-open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 13px 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .nav-links a:last-child {
+          border-bottom: 0;
+        }
+        .mobile-menu {
+          display: grid;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .hero-copy {
+          padding-top: 70px;
+          padding-bottom: 65px;
+        }
+        .hero-photo {
+          min-height: 390px;
+        }
+        .menu-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .story {
+          grid-template-columns: 1fr;
+        }
+        .story-photo {
+          min-height: 330px;
+        }
+        .story-copy {
+          padding: 60px max(20px, calc((100vw - 720px) / 2));
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .container {
+          width: min(100% - 32px, 1180px);
+        }
+        .topbar {
+          font-size: 10px;
+          letter-spacing: 0.06em;
+        }
+        .topbar .container {
+          justify-content: center;
+          text-align: center;
+        }
+        .topbar span:first-child {
+          display: none;
+        }
+        nav {
+          height: 68px;
+          gap: 12px;
+        }
+        .brand {
+          font-size: 16px;
+          letter-spacing: 0.16em;
+        }
+        .nav-actions {
+          gap: 2px;
+        }
+        .nav-actions .btn-outline {
+          display: none;
+        }
+        .user-pill {
+          max-width: 105px;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .user-pill span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .menu-grid {
+          grid-template-columns: 1fr;
+        }
+        .product-image {
+          height: 250px;
+        }
+        .section {
+          padding: 65px 0;
+        }
+        .section-heading {
+          display: block;
+        }
+        .section-heading p {
+          margin-top: 15px;
+        }
+        .hero-copy {
+          padding-top: 58px;
+          padding-bottom: 55px;
+        }
+        h1 {
+          font-size: clamp(46px, 15vw, 58px);
+        }
+        .hero-photo {
+          min-height: 300px;
+        }
+        .story-photo {
+          min-height: 270px;
+        }
+        .story-copy {
+          padding: 55px 20px;
+        }
+        .visit-inner {
+          display: block;
+        }
+        .visit h2 {
+          font-size: 34px;
+        }
+        .visit .btn {
+          margin-top: 22px;
+          width: 100%;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 20px 15px;
+        }
+        .footer-grid > :first-child {
+          grid-column: 1 / -1;
+        }
+        .modal {
+          width: calc(100% - 24px);
+          padding: 24px 20px;
+        }
+        .tabs {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+          gap: 18px;
+        }
+        .cart-items {
+          padding-left: 17px;
+          padding-right: 17px;
+        }
+        .drawer-head,
+        .cart-bottom {
+          padding-left: 17px;
+          padding-right: 17px;
+        }
+        .split-fields {
+          grid-template-columns: 1fr !important;
+          gap: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span>Small batch coffee · Big heart</span
+        ><span>Open daily 7am — 4pm · 5 Gerrit Dekker St, Potchefstroom</span>
+      </div>
+    </div>
+    <header>
+      <div class="container">
+        <nav>
+          <a class="brand" href="#home"
+            >
+			<img src="/images/logo.jpg" alt="KUKUA Logo"
+			  style="width: 50px; height: 50px; object-fit: cover">
+          <div class="nav-links">
+            <a href="#menu">Menu</a><a href="#story">Our story</a
+            ><a href="#visit">Visit us</a>
+          </div>
+          <div class="nav-actions">
+            <div class="user-pill" id="userPill">
+              <i data-lucide="user-round" width="15"></i
+              ><span id="userName"></span
+              ><button onclick="logout()">Log out</button>
+            </div>
+            <button
+              class="btn btn-outline"
+              id="loginBtn"
+              onclick="openModal('authModal')"
+            >
+              Sign in</button
+            ><button
+              class="icon-btn"
+              aria-label="Open cart"
+              onclick="toggleCart(true)"
+            >
+              <i data-lucide="shopping-bag"></i
+              ><span class="count" id="cartCount">0</span></button
+            ><button
+              class="icon-btn mobile-menu"
+              aria-label="Open menu"
+              onclick="
+                document
+                  .querySelector('.nav-links')
+                  .classList.toggle('mobile-open')
+              "
+            >
+              <i data-lucide="menu"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Good coffee, grown slowly</p>
+          <h1>Find your good cup.</h1>
+          <p>
+            Thoughtfully sourced coffee, sunny tables and something delicious
+            waiting for you. Come as you are.
+          </p>
+          <a href="#menu" class="btn btn-primary"
+            >Explore the menu <i data-lucide="arrow-down" width="16"></i
+          ></a>
+        </div>
+        <div class="hero-photo" aria-label="Barista pouring coffee"></div>
+      </section>
+      <section class="section" id="menu">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Made to order</p>
+              <h2>A little something<br />for everyone.</h2>
+            </div>
+            <p>
+              From first sip to last bite, every item is made with care and a
+              little bit of joy.
+            </p>
+          </div>
+          <div class="filter-bar">
+            <button class="filter active" data-filter="all">All day</button
+            ><button class="filter" data-filter="coffee">Coffee</button
+            ><button class="filter" data-filter="food">Food</button
+            ><button class="filter" data-filter="cold">Cold drinks</button>
+          </div>
+          <div class="menu-grid" id="menuGrid"></div>
+        </div>
+      </section>
+      <section class="story" id="story">
+        <div class="story-photo"></div>
+        <div class="story-copy">
+          <p class="eyebrow">The Kukua way</p>
+          <h2>Rooted in care.<br />Made for people.</h2>
+          <p>
+            Kukua means “to grow”. It is a reminder that the best things take
+            time: great beans, warm friendships, and the perfect morning ritual.
+          </p>
+          <button class="btn btn-light" onclick="openModal('contactModal')">
+            Say hello <i data-lucide="arrow-up-right" width="16"></i>
+          </button>
+        </div>
+      </section>
+      <section class="visit" id="visit">
+        <div class="container visit-inner">
+          <div>
+            <h2>Come find us.</h2>
+            <p>5 Gerrit Dekker St, Potchefstroom · Open every day, 7am — 4pm</p>
+          </div>
+          <button class="btn btn-primary" onclick="openModal('bookingModal')">
+            Book a table <i data-lucide="calendar-days" width="16"></i>
+          </button>
+        </div>
+      </section>
+      <section class="container admin-panel" id="adminPanel">
+        <h3>Team dashboard</h3>
+        <p>
+          You are signed in with manager permissions. Today: 28 orders · R4,820
+          revenue · 3 tables booked.
+        </p>
+        <button
+          class="btn btn-primary"
+          onclick="alert('Inventory tools are ready for your team.')"
+        >
+          Open operations <i data-lucide="layout-dashboard" width="16"></i>
+        </button>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="#home"
+              >
+			  <img src="/images/logo.jpg" alt="KUKUA Logo"
+			  style="width: 50px; height: 50px; object-fit: cover">
+            <p>
+              A neighborhood coffee shop for slow mornings and good company.
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <a href="#menu">Menu</a><a href="#story">Our story</a
+            ><a href="#visit">Find us</a>
+          </div>
+          <div>
+            <h4>Hours</h4>
+            <p>Monday — Sunday<br />7:00am — 4:00pm</p>
+          </div>
+          <div>
+            <h4>Keep in touch</h4>
+            <a href="mailto:hello@kukua.coffee">hello@kukua.coffee</a>
+            <a href="https://instagram.com/kukuacoffee" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://facebook.com/kukuacoffee" target="_blank" rel="noreferrer">Facebook</a>
+            
+            <a
+              href="#"
+              onclick="
+                openModal('contactModal');
+                return false;
+              "
+              >Contact us</a
+            >
+          </div>
+        </div>
+        <div class="copyright">© 2025 Kukua Coffee. Made for good days.</div>
+      </div>
+    </footer>
+
+    <div
+      class="drawer-backdrop"
+      id="drawerBackdrop"
+      onclick="toggleCart(false)"
+    ></div>
+    <aside class="cart-drawer" id="cartDrawer">
+      <div class="drawer-head">
+        <h2>Your bag</h2>
+        <button
+          class="icon-btn"
+          onclick="toggleCart(false)"
+          aria-label="Close cart"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-bottom">
+        <div class="total">
+          <span>Total</span><span id="cartTotal">R0.00</span>
+        </div>
+        <button class="btn btn-primary full" onclick="openCheckout()">
+          Checkout <i data-lucide="arrow-right" width="16"></i>
+        </button>
+      </div>
+    </aside>
+    <div
+      class="modal-backdrop"
+      id="modalBackdrop"
+      onclick="closeModals()"
+    ></div>
+    <div class="modal" id="authModal">
+      <button class="modal-close" onclick="closeModals()" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p class="modal-sub">Your coffee ritual, one click away.</p>
+      <div class="tabs">
+        <button class="tab active" id="loginTab" onclick="switchAuth('login')">
+          Sign in</button
+        ><button class="tab" id="signupTab" onclick="switchAuth('signup')">
+          Create account
+        </button>
+      </div>
+      <form id="authForm" onsubmit="handleAuth(event)">
+        <label class="form-field"
+          >Email<input
+            type="email"
+            id="authEmail"
+            placeholder="you@example.com"
+            required /></label
+        ><label class="form-field"
+          >Password<input
+            type="password"
+            id="authPassword"
+            placeholder="At least 6 characters"
+            minlength="6"
+            required
+        /></label>
+        <div id="roleField" style="display: none">
+          <label class="form-field"
+            >Account type<select id="authRole">
+              <option value="customer">Customer</option>
+              <option value="manager">Manager</option>
+            </select></label
+          >
+        </div>
+        <div class="notice" id="authNotice">
+          Demo mode: your session is stored securely in this browser.
+        </div>
+        <button class="btn btn-primary full" id="authSubmit">Sign in</button>
+      </form>
+    </div>
+    <div class="modal" id="checkoutModal">
+      <button class="modal-close" onclick="closeModals()" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+      <h2>Nearly there.</h2>
+      <p class="modal-sub">
+        We will send your order confirmation to your inbox.
+      </p>
+      <form onsubmit="placeOrder(event)">
+        <label class="form-field"
+          >Full name<input
+            id="checkoutName"
+            required
+            placeholder="Your name" /></label
+        ><label class="form-field"
+          >Email address<input
+            id="checkoutEmail"
+            type="email"
+            required
+            placeholder="you@example.com" /></label
+        ><label class="form-field"
+          >Pickup time<select required>
+            <option>As soon as possible</option>
+            <option>In 15 minutes</option>
+            <option>In 30 minutes</option>
+            <option>Tomorrow morning</option>
+          </select></label
+        ><button class="btn btn-primary full">
+          Place order · <span id="checkoutTotal">R0.00</span>
+          <i data-lucide="check" width="16"></i>
+        </button>
+      </form>
+    </div>
+    <div class="modal" id="successModal">
+      <div style="text-align: center">
+        <div
+          style="
+            width: 54px;
+            height: 54px;
+            background: var(--sage);
+            color: var(--forest);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+          "
+        >
+          <i data-lucide="mail-check"></i>
+        </div>
+        <h2>It is on its way.</h2>
+        <p class="modal-sub">
+          Your confirmation email has been sent. We cannot wait to make your
+          order.
+        </p>
+        <button class="btn btn-primary" onclick="closeModals()">
+          Back to menu
+        </button>
+      </div>
+    </div>
+    <div class="modal" id="bookingModal">
+      <button class="modal-close" onclick="closeModals()" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+      <h2>Save a seat.</h2>
+      <p class="modal-sub">
+        Make a booking and we will keep the good table warm.
+      </p>
+      <form onsubmit="submitSimple(event, 'booking')">
+        <label class="form-field"
+          >Name<input required placeholder="Your name" /></label
+        ><label class="form-field"
+          >Email<input type="email" required placeholder="you@example.com"
+        /></label>
+        <div
+          class="split-fields"
+          style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px"
+        >
+          <label class="form-field">Date<input type="date" required /></label
+          ><label class="form-field"
+            >Guests<select>
+              <option>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
+              <option>5+ guests</option>
+            </select></label
+          >
+        </div>
+        <button class="btn btn-primary full">
+          Request booking <i data-lucide="arrow-right" width="16"></i>
+        </button>
+      </form>
+    </div>
+    <div class="modal" id="contactModal">
+      <button class="modal-close" onclick="closeModals()" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+      <h2>Say hello.</h2>
+      <p class="modal-sub">
+        A question, a kind word, or a really specific milk request.
+      </p>
+      <form onsubmit="submitSimple(event, 'message')">
+        <label class="form-field"
+          >Your email<input
+            type="email"
+            required
+            placeholder="you@example.com" /></label
+        ><label class="form-field"
+          >Message<textarea
+            required
+            placeholder="Write us a note..."
+          ></textarea></label
+        ><button class="btn btn-primary full">
+          Send message <i data-lucide="send" width="16"></i>
+        </button>
+      </form>
+    </div>
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: "Kukua house blend",
+          type: "coffee",
+          price: 38,
+          desc: "Chocolate, caramel and a soft citrus finish.",
+          image:
+            "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=700&q=80",
+        },
+        {
+          id: 2,
+          name: "Flat white",
+          type: "coffee",
+          price: 42,
+          desc: "Silky steamed milk over a double ristretto.",
+          image:
+            "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=700&q=80",
+        },
+        {
+          id: 3,
+          name: "Iced matcha cloud",
+          type: "cold",
+          price: 48,
+          desc: "Bright ceremonial matcha, oat milk and vanilla.",
+          image:
+            "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=700&q=80",
+        },
+        {
+          id: 4,
+          name: "Cinnamon morning bun",
+          type: "food",
+          price: 36,
+          desc: "Buttery, caramelised and best enjoyed warm.",
+          image:
+            "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+        },
+        {
+          id: 5,
+          name: "Green garden toast",
+          type: "food",
+          price: 72,
+          desc: "Smashed avo, herbs, lemon and toasted sourdough.",
+          image:
+            "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=700&q=80",
+        },
+        {
+          id: 6,
+          name: "Cold brew tonic",
+          type: "cold",
+          price: 46,
+          desc: "Twelve-hour cold brew, tonic and a twist of orange.",
+          image:
+            "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80",
+        },
+      ];
+      let cart = JSON.parse(localStorage.getItem("kukua-cart") || "[]");
+      let authMode = "login";
+      const money = (value) => `R${value.toFixed(2)}`;
+      function renderMenu(filter = "all") {
+        document.getElementById("menuGrid").innerHTML = products
+          .filter((p) => filter === "all" || p.type === filter)
+          .map(
+            (p) =>
+              `<article class="product"><img class="product-image" src="${p.image}" alt="${p.name}"><div class="product-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="product-foot"><span class="price">${money(p.price)}</span><button class="add-btn" onclick="addToCart(${p.id})" aria-label="Add ${p.name} to cart"><i data-lucide="plus" width="18"></i></button></div></div></article>`,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+      function addToCart(id) {
+        const item = cart.find((i) => i.id === id);
+        item ? item.qty++ : cart.push({ id, qty: 1 });
+        saveCart();
+        toggleCart(true);
+      }
+      function saveCart() {
+        localStorage.setItem("kukua-cart", JSON.stringify(cart));
+        renderCart();
+      }
+      function renderCart() {
+        const totalItems = cart.reduce((sum, i) => sum + i.qty, 0);
+        const total = cart.reduce(
+          (sum, i) => sum + products.find((p) => p.id === i.id).price * i.qty,
+          0,
+        );
+        document.getElementById("cartCount").textContent = totalItems;
+        document.getElementById("cartTotal").textContent = money(total);
+        document.getElementById("checkoutTotal").textContent = money(total);
+        document.getElementById("cartItems").innerHTML = cart.length
+          ? cart
+              .map((i) => {
+                const p = products.find((x) => x.id === i.id);
+                return `<div class="cart-line"><img src="${p.image}" alt="${p.name}"><div><h4>${p.name}</h4><p>${money(p.price)}</p></div><div class="qty"><button onclick="changeQty(${p.id}, -1)">−</button><span>${i.qty}</span><button onclick="changeQty(${p.id}, 1)">+</button></div></div>`;
+              })
+              .join("")
+          : '<div class="empty"><i data-lucide="coffee" width="30"></i><p>Your bag is waiting for something good.</p></div>';
+        lucide.createIcons();
+      }
+      function changeQty(id, amount) {
+        const item = cart.find((i) => i.id === id);
+        item.qty += amount;
+        if (item.qty < 1) cart = cart.filter((i) => i.id !== id);
+        saveCart();
+      }
+      function toggleCart(open) {
+        document.getElementById("cartDrawer").classList.toggle("open", open);
+        document
+          .getElementById("drawerBackdrop")
+          .classList.toggle("open", open);
+      }
+      function openModal(id) {
+        closeModals();
+        document.getElementById(id).classList.add("open");
+        document.getElementById("modalBackdrop").classList.add("open");
+      }
+      function closeModals() {
+        document
+          .querySelectorAll(".modal")
+          .forEach((m) => m.classList.remove("open"));
+        document.getElementById("modalBackdrop").classList.remove("open");
+      }
+      function switchAuth(mode) {
+        authMode = mode;
+        document
+          .getElementById("loginTab")
+          .classList.toggle("active", mode === "login");
+        document
+          .getElementById("signupTab")
+          .classList.toggle("active", mode === "signup");
+        document.getElementById("authTitle").textContent =
+          mode === "login" ? "Welcome back." : "Join the good stuff.";
+        document.getElementById("authSubmit").textContent =
+          mode === "login" ? "Sign in" : "Create account";
+        document.getElementById("roleField").style.display =
+          mode === "signup" ? "block" : "none";
+      }
+      function handleAuth(event) {
+        event.preventDefault();
+        const email = document.getElementById("authEmail").value;
+        const role =
+          authMode === "signup"
+            ? document.getElementById("authRole").value
+            : JSON.parse(localStorage.getItem("kukua-user") || "{}").role ||
+              "customer";
+        const user = { email, name: email.split("@")[0], role };
+        localStorage.setItem("kukua-user", JSON.stringify(user));
+        applyUser(user);
+        closeModals();
+      }
+      function applyUser(user) {
+        document.getElementById("userName").textContent = user.name;
+        document.getElementById("userPill").classList.add("active");
+        document.getElementById("loginBtn").style.display = "none";
+        document
+          .getElementById("adminPanel")
+          .classList.toggle("visible", user.role === "manager");
+      }
+      function logout() {
+        localStorage.removeItem("kukua-user");
+        document.getElementById("userPill").classList.remove("active");
+        document.getElementById("loginBtn").style.display = "";
+        document.getElementById("adminPanel").classList.remove("visible");
+      }
+      function openCheckout() {
+        if (!cart.length) return;
+        toggleCart(false);
+        const user = JSON.parse(localStorage.getItem("kukua-user") || "{}");
+        if (user.email)
+          document.getElementById("checkoutEmail").value = user.email;
+        openModal("checkoutModal");
+      }
+      function placeOrder(event) {
+        event.preventDefault();
+        localStorage.setItem(
+          "kukua-last-order",
+          JSON.stringify({ placedAt: Date.now(), items: cart }),
+        );
+        cart = [];
+        saveCart();
+        closeModals();
+        openModal("successModal");
+      }
+      function submitSimple(event, type) {
+        event.preventDefault();
+        closeModals();
+        openModal("successModal");
+        document.querySelector("#successModal h2").textContent =
+          type === "booking" ? "Request received." : "Message sent.";
+        document.querySelector("#successModal .modal-sub").textContent =
+          type === "booking"
+            ? "We will email you shortly to confirm your table."
+            : "Thanks for reaching out. We will be in touch soon.";
+      }
+      document.querySelectorAll(".filter").forEach((button) =>
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter")
+            .forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          renderMenu(button.dataset.filter);
+        }),
+      );
+      document
+        .querySelectorAll(".nav-links a")
+        .forEach((link) =>
+          link.addEventListener("click", () =>
+            document
+              .querySelector(".nav-links")
+              .classList.remove("mobile-open"),
+          ),
+        );
+      renderMenu();
+      renderCart();
+      const savedUser = JSON.parse(
+        localStorage.getItem("kukua-user") || "null",
+      );
+      if (savedUser) applyUser(savedUser);
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
